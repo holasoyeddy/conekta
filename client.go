@@ -10,7 +10,7 @@ type Client struct {
 	Locale    string
 	Key       string
 	Version   string
-	Requestor *Requestor
+	requestor *requestor
 }
 
 // NewClient sets up a new client with the API key provided. The other values are set by default, but can be changed using the appropriate setters.
@@ -21,7 +21,7 @@ func NewClient(key string) *Client {
 		Locale:    "es",
 		Key:       key,
 		Version:   "2.0.0",
-		Requestor: NewRequestor(),
+		requestor: newRequestor(),
 	}
 
 	return client

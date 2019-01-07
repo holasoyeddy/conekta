@@ -6,17 +6,15 @@ import (
 	"time"
 )
 
-// Requestor ...
-type Requestor struct {
-	HTTPClient *http.Client
+type requestor struct {
+	httpClient *http.Client
 }
 
-// NewRequestor ...
-func NewRequestor() *Requestor {
+func newRequestor() *requestor {
 
 	// Create a new requestor with a 10 second request timeout limit.
-	requestor := &Requestor{
-		HTTPClient: &http.Client{
+	requestor := &requestor{
+		httpClient: &http.Client{
 			Timeout: time.Second * 10,
 		},
 	}
@@ -25,7 +23,7 @@ func NewRequestor() *Requestor {
 }
 
 // SendRequest receives an interface, marshals it as json data and then sends it to the specified URI using the provided HTTP method (GET, POST, PUT, DELETE, etc).
-func (requestor *Requestor) SendRequest(method string, data interface{}, uri string, key string) (*http.Response, error) {
+func (requestor *requestor) sendRequest(method string, data interface{}, uri string, key string) (*http.Response, error) {
 
 	// Create a new request.
 	request, err := http.NewRequest(method, uri, nil)
@@ -40,7 +38,7 @@ func (requestor *Requestor) SendRequest(method string, data interface{}, uri str
 	setHeaders(request, key)
 
 	// Send the request
-	response, err := requestor.HTTPClient.Do(request)
+	response, err := requestor.httpClient.Do(request)
 
 	// If the request returned an error, return a nil conekta response and the error
 	if err != nil {

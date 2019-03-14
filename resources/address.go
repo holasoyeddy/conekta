@@ -8,7 +8,7 @@ type Address struct {
 	City        string `json:"city"`
 	State       string `json:"state"`
 	Country     string `json:"country"`
-	ZIP         string `json:"zip"`
+	PostalCode  string `json:"postal_code"`
 	Residential bool   `json:"residential"`
 	ParentID    string `json:"parent_id"`
 }

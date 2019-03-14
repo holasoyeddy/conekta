@@ -48,7 +48,7 @@ func TestCreateOneTimePayment(t *testing.T) {
 		Charges: []resources.Charge{
 			resources.Charge{
 				PaymentMethod: resources.PaymentMethod{
-					Type:    "Card",
+					Type:    "card",
 					TokenID: "tok_test_visa_4242",
 				},
 			},

@@ -2,13 +2,13 @@ package resources
 
 // PaymentMethod ...
 type PaymentMethod struct {
-	ServiceName string `json:"service_name"`
+	ServiceName string `json:"service_name,omitempty"`
 	TokenID     string `json:"token_id,omitempty"`
-	Object      string `json:"object"`
-	Type        string `json:"type"`
-	ExpiresAt   int    `json:"expires_at"`
-	StoreName   string `json:"store_name"`
-	Reference   string `json:"reference"`
+	Object      string `json:"object,omitempty"`
+	Type        string `json:"type,omitempty"`
+	ExpiresAt   int    `json:"expires_at,omitempty"`
+	StoreName   string `json:"store_name,omitempty"`
+	Reference   string `json:"reference,omitempty"`
 }
 
 // type PaymentMethod struct {

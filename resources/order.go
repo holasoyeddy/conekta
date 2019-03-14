@@ -2,22 +2,21 @@ package resources
 
 // Order ..
 type Order struct {
-	ID              string          `json:"id"`
-	Object          string          `json:"object"`
-	Livemode        bool            `json:"livemode"`
-	Amount          int             `json:"amount"`
-	AmountRefunded  int             `json:"amount_refunded"`
-	PaymentStatus   string          `json:"payment_status"`
-	Currency        string          `json:"currency"`
-	CustomerInfo    Customer        `json:"customer_info"`
-	CreatedAt       int             `json:"created_at"`
-	UpdatedAt       int             `json:"updated_at"`
-	LineItems       []LineItem      `json:"line_items"`
-	Charges         []Charge        `json:"charges"`
-	ShippingLines   []ShippingLine  `json:"shipping_lines"`
-	ShippingContact ShippingContact `json:"shipping_contact"`
-	Metadata        struct {
-	} `json:"metadata"`
+	ID              string          `json:"id,omitempty"`
+	Object          string          `json:"object,omitempty"`
+	Livemode        bool            `json:"livemode,omitempty"`
+	Amount          int             `json:"amount,omitempty"`
+	AmountRefunded  int             `json:"amount_refunded,omitempty"`
+	PaymentStatus   string          `json:"payment_status,omitempty"`
+	Currency        string          `json:"currency,omitempty"`
+	CustomerInfo    Customer        `json:"customer_info,omitempty"`
+	CreatedAt       int             `json:"created_at,omitempty"`
+	UpdatedAt       int             `json:"updated_at,omitempty"`
+	LineItems       []LineItem      `json:"line_items,omitempty"`
+	Charges         []Charge        `json:"charges,omitempty"`
+	ShippingLines   []ShippingLine  `json:"shipping_lines,omitempty"`
+	ShippingContact ShippingContact `json:"shipping_contact,omitempty"`
+	Metadata        struct{}        `json:"metadata,omitempty"`
 }
 
 // type Order struct {

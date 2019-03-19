@@ -73,7 +73,7 @@ func (client *Client) Create(data interface{}) (*http.Response, error) {
 	// // Send the request.
 	request, err := client.createHTTPRequest("POST", client.BaseURI+endpoint, body)
 
-	client.print(request)
+	client.debug(request)
 
 	// Return error if any.
 	if err != nil {
@@ -92,8 +92,8 @@ func (client *Client) Create(data interface{}) (*http.Response, error) {
 		return nil, fmt.Errorf("%#v", response)
 	}
 
-	// Print the response.
-	client.print(response)
+	// Print the response. 
+	client.debug(response)
 
 	return response, nil
 }
@@ -123,7 +123,7 @@ func Delete(data interface{}) {
 	// Return a response.
 }
 
-func (client *Client) print(data interface{}) {
+func (client *Client) debug(data interface{}) {
 	if client.Debug {
 
 		log.Printf("%#v", data)

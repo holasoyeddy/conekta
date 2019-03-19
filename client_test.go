@@ -7,10 +7,14 @@ import (
 	"github.com/holasoyeddy/conekta/resources"
 )
 
+var client *conekta.Client
+
 func TestCreateOneTimePayment(t *testing.T) {
 
 	// Initialize your Conekta client.
-	client, err := conekta.NewClient("key_eYvWV7gSDkNYXsmr")
+	var err error
+
+	client, err = conekta.NewClient("key_eYvWV7gSDkNYXsmr")
 
 	// Check for client init error.
 	if err != nil || client == nil {
@@ -48,7 +52,7 @@ func TestCreateOneTimePayment(t *testing.T) {
 		Charges: []resources.Charge{
 			resources.Charge{
 				PaymentMethod: resources.PaymentMethod{
-					Type:    "Card",
+					Type:    "card",
 					TokenID: "tok_test_visa_4242",
 				},
 			},

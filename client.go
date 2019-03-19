@@ -81,6 +81,12 @@ func (client *Client) Create(data interface{}) (*http.Response, error) {
 	}
 
 	if client.Debug {
+
+		// Return error if any.
+		if err != nil {
+			return nil, err
+		}
+
 		requestLog, _ := httputil.DumpRequestOut(request, true)
 
 		client.debug("- HTTP REQUEST:\n" + string(requestLog))
@@ -95,7 +101,12 @@ func (client *Client) Create(data interface{}) (*http.Response, error) {
 	}
 
 	if client.Debug {
-		responseLog, _ := httputil.DumpResponse(response, true)
+		responseLog, err := httputil.DumpResponse(response, true)
+
+		// Return error if any.
+		if err != nil {
+			return nil, err
+		}
 
 		// Print the response.
 		client.debug("- HTTP RESPONSE:\n" + string(responseLog) + "\n")

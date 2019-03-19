@@ -1,4 +1,4 @@
-package resources
+package conekta
 
 // Return ...
 type Return struct {

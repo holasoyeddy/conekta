@@ -1,4 +1,4 @@
-package resources
+package conekta
 
 // Customer ...
 type Customer struct {

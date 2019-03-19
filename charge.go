@@ -1,4 +1,4 @@
-package resources
+package conekta
 
 // Charge ...
 type Charge struct {

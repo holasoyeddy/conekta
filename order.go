@@ -1,4 +1,4 @@
-package resources
+package conekta
 
 // Order represents a purchase. It contains all the details related to it, including payment method, shipment, charges, discounts, taxes and the products.
 // For further information, visit https://developers.conekta.com/api?#order

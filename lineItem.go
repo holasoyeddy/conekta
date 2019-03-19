@@ -1,4 +1,4 @@
-package resources
+package conekta
 
 // LineItem ...
 type LineItem struct {

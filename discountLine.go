@@ -1,4 +1,4 @@
-package resources
+package conekta
 
 // DiscountLine ...
 type DiscountLine struct {

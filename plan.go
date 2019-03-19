@@ -1,4 +1,4 @@
-package resources
+package conekta
 
 // Plan is a template for a subscription. It allows you to define the amount and frequency with which you would like to bill your clients.
 // For further information, visit https://developers.conekta.com/api?#plan

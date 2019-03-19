@@ -1,4 +1,4 @@
-package resources
+package conekta
 
 // FiscalEntity ...
 type FiscalEntity struct {

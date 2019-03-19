@@ -1,4 +1,4 @@
-package resources
+package conekta
 
 // PaymentSource ...
 type PaymentSource struct {

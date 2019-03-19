@@ -1,4 +1,4 @@
-package resources
+package conekta
 
 // Subscription ...
 type Subscription struct {

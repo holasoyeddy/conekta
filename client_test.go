@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	"github.com/holasoyeddy/conekta"
-	"github.com/holasoyeddy/conekta/resources"
 )
 
 var client *conekta.Client
@@ -22,36 +21,36 @@ func TestCreateOneTimePayment(t *testing.T) {
 	}
 
 	// Create an order and add the token.
-	order := resources.Order{
-		LineItems: []resources.LineItem{
-			resources.LineItem{
+	order := conekta.Order{
+		LineItems: []conekta.LineItem{
+			conekta.LineItem{
 				Name:      "Tacos",
 				UnitPrice: 1000,
 				Quantity:  120,
 			},
 		},
-		ShippingLines: []resources.ShippingLine{
-			resources.ShippingLine{
+		ShippingLines: []conekta.ShippingLine{
+			conekta.ShippingLine{
 				Amount:  1500,
 				Carrier: "FEDEX",
 			},
 		},
 		Currency: "MXN",
-		CustomerInfo: resources.Customer{
+		CustomerInfo: conekta.Customer{
 			Name:  "Fulanito Pérez",
 			Email: "fulanito@conekta.com",
 			Phone: "+52181818181",
 		},
-		ShippingContact: resources.ShippingContact{
-			Address: resources.Address{
+		ShippingContact: conekta.ShippingContact{
+			Address: conekta.Address{
 				Street1:    "Calle 123, Int 2",
 				PostalCode: "06100",
 				Country:    "MX",
 			},
 		},
-		Charges: []resources.Charge{
-			resources.Charge{
-				PaymentMethod: resources.PaymentMethod{
+		Charges: []conekta.Charge{
+			conekta.Charge{
+				PaymentMethod: conekta.PaymentMethod{
 					Type:    "card",
 					TokenID: "tok_test_visa_4242",
 				},

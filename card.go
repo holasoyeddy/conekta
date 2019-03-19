@@ -1,4 +1,4 @@
-package resources
+package conekta
 
 // Card ...
 type Card struct {

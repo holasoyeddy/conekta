@@ -2,11 +2,11 @@ package resources
 
 // FiscalEntity ...
 type FiscalEntity struct {
-	ID          string  `json:"id"`
-	TaxID       string  `json:"tax_id"`
-	CompanyName string  `json:"company_name"`
-	Email       string  `json:"email"`
-	Phone       string  `json:"phone"`
-	Address     Address `json:"address"`
-	ParentID    string  `json:"parent_id"`
+	ID          string  `json:"id,omitempty"`
+	TaxID       string  `json:"tax_id,omitempty"`
+	CompanyName string  `json:"company_name,omitempty"`
+	Email       string  `json:"email,omitempty"`
+	Phone       string  `json:"phone,omitempty"`
+	Address     Address `json:"address,omitempty"`
+	ParentID    string  `json:"parent_id,omitempty"`
 }

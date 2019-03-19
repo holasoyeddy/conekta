@@ -1,11 +1,13 @@
 package conekta
 
 import (
+	"bytes"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
+	"net/http/httputil"
 	"reflect"
 	"time"
 )
@@ -73,14 +75,18 @@ func (client *Client) Create(data interface{}) (*http.Response, error) {
 	// // Send the request.
 	request, err := client.createHTTPRequest("POST", client.BaseURI+endpoint, body)
 
-	client.debug(request)
-
 	// Return error if any.
 	if err != nil {
 		return nil, err
 	}
 
-	// // Retrieve response.
+	if client.Debug {
+		requestLog, _ := httputil.DumpRequestOut(request, true)
+
+		client.debug("- HTTP REQUEST:\n" + string(requestLog))
+	}
+
+	// Retrieve response.
 	response, err := client.HTTPClient.Do(request)
 
 	// Return error if any.
@@ -88,12 +94,16 @@ func (client *Client) Create(data interface{}) (*http.Response, error) {
 		return nil, err
 	}
 
-	if response.StatusCode != 202 {
-		return nil, fmt.Errorf("%#v", response)
+	if client.Debug {
+		responseLog, _ := httputil.DumpResponse(response, true)
+
+		// Print the response.
+		client.debug("- HTTP RESPONSE:\n" + string(responseLog) + "\n")
 	}
 
-	// Print the response. 
-	client.debug(response)
+	if response.StatusCode == 422 {
+		return nil, fmt.Errorf("%#v", response)
+	}
 
 	return response, nil
 }
@@ -126,13 +136,13 @@ func Delete(data interface{}) {
 func (client *Client) debug(data interface{}) {
 	if client.Debug {
 
-		log.Printf("%#v", data)
+		log.Printf("%v", data)
 	}
 }
 
 func (client *Client) createHTTPRequest(method, url string, body []byte) (*http.Request, error) {
 
-	request, err := http.NewRequest(method, url, nil)
+	request, err := http.NewRequest(method, url, bytes.NewBuffer(body))
 
 	// Convert key to Base64 encoded string
 	key := base64.StdEncoding.EncodeToString([]byte(client.Key))
